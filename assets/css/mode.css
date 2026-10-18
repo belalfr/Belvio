@@ -219,7 +219,7 @@ html[data-mode="front"] .head p{flex:none;max-width:34ch}
   html[data-mode="front"] .nav__links a{padding:8px 10px}
 }
 @media (min-width:721px) and (max-width:900px){
-  .nav__cta{display:none}
+  .nav__cta .btn{display:none}
   .nav__links{gap:12px}
   html[data-mode="front"] .nav__links{gap:0}
 }
@@ -246,7 +246,7 @@ html[data-mode="front"] .logo-mark path{transform:translate(1.55px,-4.85px)}
 }
 
 /* ---- flip button: one button, previews the other side ---- */
-.mode{position:relative;display:inline-flex;align-items:center;gap:11px;flex:none;height:40px;margin-left:auto;padding:0 18px 0 13px;border:1px solid var(--line);background:transparent;color:var(--ink);font:500 13px/1 var(--mono);cursor:pointer;transform:skewX(-9deg);-webkit-tap-highlight-color:transparent;touch-action:manipulation;white-space:nowrap;transition:background .25s,border-color .25s}
+.mode{position:relative;display:inline-flex;align-items:center;gap:11px;flex:none;height:40px;padding:0 18px 0 13px;border:1px solid var(--line);background:transparent;color:var(--ink);font:500 13px/1 var(--mono);cursor:pointer;transform:skewX(-9deg);-webkit-tap-highlight-color:transparent;touch-action:manipulation;white-space:nowrap;transition:background .25s,border-color .25s}
 .mode>*{transform:skewX(9deg)}
 .mode:focus-visible{outline:2px solid var(--link);outline-offset:4px}
 .mode__ico{position:relative;flex:none;width:16px;height:16px;border:1.5px solid var(--ink);background:linear-gradient(90deg,var(--ink) 50%,transparent 50%);transition:transform .7s var(--ease)}
@@ -272,7 +272,6 @@ html[data-mode="front"] .mode__ico{width:20px;height:20px;border:2px solid #111;
   html[data-mode="front"] .mode{width:44px;padding:0}
 }
 @media (max-width:720px){
-  .nav>.mode{display:none}
   .nav__menu-extra .mode--menu{display:inline-flex;margin:16px 0 0 8px;height:50px;padding:0 20px 0 16px;font-size:14px}
   html[data-mode="front"] .nav__menu-extra .mode--menu{margin-left:0;height:52px;font-size:15px}
   .nav{gap:6px}
@@ -280,3 +279,19 @@ html[data-mode="front"] .mode__ico{width:20px;height:20px;border:2px solid #111;
 html[data-mode="front"] .thread circle{display:none}
 html[data-mode="front"] .thread line{stroke-width:1.6}
 .mode__bl>span{justify-self:start}
+
+.nav__cta{display:flex;align-items:center;gap:14px}
+.nav__cta .mode{display:inline-flex}
+html[data-mode="front"] .btn__tx .t1,html[data-mode="front"] .btn__tx .t2{transform:none!important;transition:none}
+html[data-mode="front"] .btn__tx .t2{display:none}
+
+/* header links centred between logo and flip button */
+@media (min-width:721px){
+  .nav>.nav__links,.nav>ul{margin-left:auto}
+  .nav>.mode{margin-left:auto}
+}
+/* free-audit tag: bg still goes green on hover, text stays put */
+.btn:is(:hover,:focus-visible) .btn__tag .btn__tx .t1,.spider-stage.is-hot .btn__tag .btn__tx .t1{transform:none!important}
+.btn__tag .btn__tx .t2{display:none!important}
+@media (min-width:721px){html .nav>.mode,html[data-mode="front"] .nav>.mode{margin-left:auto!important}}
+@media (min-width:721px){.nav>.nav__cta{margin-left:auto}}
