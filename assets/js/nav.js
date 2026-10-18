@@ -80,5 +80,5 @@
   toggle.addEventListener("click", function () { set(!document.body.classList.contains("menu-open")); });
   menu.addEventListener("click", function (e) { if (e.target.closest("a")) set(false); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
-  window.matchMedia("(min-width: 721px)").addEventListener("change", function (m) { if (m.matches) set(false); });
+  window.matchMedia("(min-width: 901px)").addEventListener("change", function (m) { if (m.matches) set(false); });
 })();

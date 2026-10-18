@@ -43,7 +43,7 @@ html[data-mode="front"] .nav__links a.is-active{background:var(--yellow);border-
 html[data-mode="front"] .nav__links a.is-active::before{display:none}
 html[data-mode="front"] .nav__links a.btn,html[data-mode="front"] .nav__links a.btn:hover{background:var(--card);border-color:#111;padding:0 8px 0 22px}
 html[data-mode="front"] .nav__menu-extra p{display:none}
-@media (max-width:720px){
+@media (max-width:900px){
   html[data-mode="front"] .nav__links::before{content:""}
   html[data-mode="front"] .nav__links li{border-left:0;margin-left:0}
   html[data-mode="front"] .nav__links li::before{display:none}
@@ -91,7 +91,7 @@ html[data-mode="front"] .hero .hl--blue{display:table;margin-top:.08em}
 html[data-mode="reduced"] .hero h1 .ln{animation:none}
 
 /* serp card */
-html[data-mode="front"] .serp{margin-top:50px;padding:24px 22px 20px;background:var(--card);border:2px solid #111;border-radius:16px;box-shadow:6px 6px 0 #111}
+html[data-mode="front"] .serp{margin-top:30px;padding:24px 22px 20px;background:var(--card);border:2px solid #111;border-radius:16px;box-shadow:6px 6px 0 #111}
 html[data-mode="front"] .serp::before,html[data-mode="front"] .serp::after,html[data-mode="front"] .serp__dots{display:none}
 html[data-mode="front"] .serp__tag{right:16px;bottom:calc(100% - 10px);padding:6px 12px;background:var(--blue);color:#fff;border:2px solid #111;border-radius:7px;transform:rotate(3deg);clip-path:none;font-weight:700}
 html[data-mode="front"] .serp__search{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding:9px 13px;border:2px solid #111;border-radius:10px;background:#fff;font:500 13px/1 var(--mono);color:#111}
@@ -211,14 +211,14 @@ html[data-mode="front"] .head p{flex:none;max-width:34ch}
 @media (max-width:720px){html[data-mode="front"] .head p{max-width:none}}
 
 /* tablet widths: keep the header on one line */
-@media (min-width:721px) and (max-width:1100px){
+@media (min-width:901px) and (max-width:1100px){
   .nav{gap:14px}
   .nav__links{gap:16px;font-size:12.5px}
   .nav__name i{display:none}
   html[data-mode="front"] .nav__links{gap:2px;font-size:13px}
   html[data-mode="front"] .nav__links a{padding:8px 10px}
 }
-@media (min-width:721px) and (max-width:900px){
+@media (min-width:901px) and (max-width:1000px){
   .nav__cta .btn{display:none}
   .nav__links{gap:12px}
   html[data-mode="front"] .nav__links{gap:0}
@@ -238,10 +238,10 @@ html[data-mode="front"] .faq:hover{transform:none}
 /* round 10 */
 html[data-mode="front"] .logo-mark{overflow:visible}
 html[data-mode="front"] .logo-mark path{transform:translate(1.55px,-4.85px)}
-@media (max-width:720px){
+@media (max-width:900px){
   .nav__name{display:none!important}
 }
-@media (max-width:720px){
+@media (max-width:900px){
   .nav{gap:6px}
 }
 
@@ -266,12 +266,8 @@ html[data-mode="front"] .mode{transform:none;height:44px;padding:0 18px 0 14px;b
 html[data-mode="front"] .mode>*{transform:none}
 html[data-mode="front"] .mode__ico{width:20px;height:20px;border:2px solid #111;border-radius:50%;background:linear-gradient(90deg,var(--yellow) 50%,#111 50%)}
 @media (hover:hover){html[data-mode="front"] .mode:hover{background:#fff3b0}}
-@media (min-width:721px) and (max-width:1240px){
-  .mode{padding:0;width:40px;justify-content:center}
-  .mode__bl{display:none}
-  html[data-mode="front"] .mode{width:44px;padding:0}
-}
-@media (max-width:720px){
+
+@media (max-width:900px){
   .nav__menu-extra .mode--menu{display:inline-flex;margin:16px 0 0 8px;height:50px;padding:0 20px 0 16px;font-size:14px}
   html[data-mode="front"] .nav__menu-extra .mode--menu{margin-left:0;height:52px;font-size:15px}
   .nav{gap:6px}
@@ -286,12 +282,41 @@ html[data-mode="front"] .btn__tx .t1,html[data-mode="front"] .btn__tx .t2{transf
 html[data-mode="front"] .btn__tx .t2{display:none}
 
 /* header links centred between logo and flip button */
-@media (min-width:721px){
+@media (min-width:901px){
   .nav>.nav__links,.nav>ul{margin-left:auto}
   .nav>.mode{margin-left:auto}
 }
 /* free-audit tag: bg still goes green on hover, text stays put */
 .btn:is(:hover,:focus-visible) .btn__tag .btn__tx .t1,.spider-stage.is-hot .btn__tag .btn__tx .t1{transform:none!important}
 .btn__tag .btn__tx .t2{display:none!important}
-@media (min-width:721px){html .nav>.mode,html[data-mode="front"] .nav>.mode{margin-left:auto!important}}
-@media (min-width:721px){.nav>.nav__cta{margin-left:auto}}
+@media (min-width:901px){html .nav>.mode,html[data-mode="front"] .nav>.mode{margin-left:auto!important}}
+@media (min-width:901px){.nav>.nav__cta{margin-left:auto}}
+
+/* ---- flip button v2: small icon switch, label pops up as a tag on hover ---- */
+@media (min-width:901px){
+  .mode{padding:0;width:40px;gap:0;justify-content:center}
+  html[data-mode="front"] .mode{width:44px;padding:0}
+  .mode__ico{width:18px;height:18px}
+  html[data-mode="front"] .mode__ico{width:22px;height:22px}
+  .mode__bl{display:block!important;position:absolute;top:calc(100% + 12px);right:-6px;padding:8px 11px;overflow:visible;background:var(--ink);color:var(--bg);font:500 11.5px/1 var(--mono);letter-spacing:.02em;opacity:0;transform:translateY(-5px) skewX(9deg);pointer-events:none;transition:opacity .2s,transform .3s var(--ease);z-index:5}
+  .mode__bl .t1{display:none}
+  .mode__bl .t2{display:block;transform:none!important;grid-area:auto}
+  html[data-mode="front"] .mode__bl{transform:translateY(-5px);right:0;padding:8px 12px;background:#111;color:#fff;border-radius:8px;font:700 12.5px/1 var(--sans);box-shadow:3px 3px 0 var(--yellow)}
+  .mode:is(:hover,:focus-visible) .mode__bl{opacity:1;transform:translateY(0) skewX(9deg)}
+  html[data-mode="front"] .mode:is(:hover,:focus-visible) .mode__bl{transform:translateY(0)}
+}
+
+/* ---- burger menu: never clip, scroll cleanly at high zoom / short screens ---- */
+@media (max-width:900px){
+  .nav__links{justify-content:flex-start;-webkit-mask-image:linear-gradient(to bottom,transparent 56px,#000 84px);mask-image:linear-gradient(to bottom,transparent 56px,#000 84px)}
+  .nav__links::before{margin-top:auto}
+  .nav__links>li:last-child{margin-bottom:auto}
+  .nav__links>li.nav__menu-extra{padding-bottom:24px}
+}
+@media (max-width:900px) and (max-height:620px){
+  .nav__links{padding-top:84px;padding-bottom:24px}
+  .nav__links .w,html[data-mode="front"] .nav__links .w{font-size:clamp(34px,9vw,46px)}
+  .nav__links li:not(.nav__menu-extra) a{padding-top:2px;padding-bottom:2px}
+  .nav__links li.nav__menu-extra,html[data-mode="front"] .nav__links li.nav__menu-extra{margin-top:18px}
+  .nav__menu-extra p{margin-top:16px}
+}
