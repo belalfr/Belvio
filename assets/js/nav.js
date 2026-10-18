@@ -70,6 +70,7 @@
   }
 
   if (!toggle || !menu) return;
+  menu.setAttribute("data-lenis-prevent", "");
   function set(open) {
     document.body.classList.toggle("menu-open", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");

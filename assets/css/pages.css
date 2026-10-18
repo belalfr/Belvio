@@ -1,7 +1,7 @@
 /* Belvio: page-specific. Hero, spider, serp card, article, 404 */
 
 /* ---- hero ---- */
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(112px,12vw,136px) 0 clamp(40px,5vw,64px)}
+.hero{position:relative;min-height:calc(100svh + 28px);display:flex;flex-direction:column;justify-content:center;padding:clamp(112px,12vw,136px) 0 clamp(40px,5vw,64px)}
 .hero__grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:clamp(32px,4vw,56px);align-items:start}
 .hello{margin-top:30px;display:flex;align-items:center;gap:12px;font:600 clamp(22px,2.5vw,32px)/1.1 var(--sans);font-stretch:100%;letter-spacing:0;color:var(--muted)}
 .hello::before{content:"";width:12px;height:12px;background:var(--link);transform:skewX(-9deg);flex:none}

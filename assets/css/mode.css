@@ -67,7 +67,7 @@ html[data-mode="front"] .btn--lg{--h:70px;--cw:46px;--gap:18px;padding:0 12px 0 
 html[data-mode="front"] .btn--sm .btn__chip svg{width:14px;height:14px}
 html[data-mode="front"] .btn--lg .btn__chip svg{width:19px;height:19px}
 @media (hover:hover){
-  html[data-mode="front"] .btn:is(:hover,:focus-visible),html[data-mode="front"] .spider-stage.is-hot .btn{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--blue)}
+  html[data-mode="front"] .btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--blue);transition:none}
   html[data-mode="front"] .btn:is(:hover,:focus-visible) .btn__chip,html[data-mode="front"] .spider-stage.is-hot .btn .btn__chip{transform:none;background:var(--blue);color:#fff}
   html[data-mode="front"] .btn--ghost:is(:hover,:focus-visible) .btn__body{background:none}
 }
@@ -230,8 +230,7 @@ html[data-mode="front"] .nav__name i{display:none}
 html[data-mode="front"] .nav__name b{font-size:18px}
 html[data-mode="front"] .serp .fav{border-radius:50%}
 html[data-mode="front"] .bg-glow{display:none}
-html[data-mode="front"] .spider__tag:is(:hover,:focus-visible),html[data-mode="front"] .spider-stage.is-hot .spider__tag{transform:translate(calc(-50% + 3px),3px)}
-html[data-mode="front"] .spider__tag:active{transform:translate(calc(-50% + 4px),4px)}
+html[data-mode="front"] .spider__tag:active{transform:translate(calc(-50% + 4px),4px);box-shadow:0 0 0 var(--blue);transition:none}
 html[data-mode="front"] a.card:hover{transform:none;box-shadow:6px 6px 0 var(--sh,#111);background:#fff3b0}
 html[data-mode="front"] .faq:hover{transform:none}
 
@@ -268,8 +267,10 @@ html[data-mode="front"] .mode__ico{width:20px;height:20px;border:2px solid #111;
 @media (hover:hover){html[data-mode="front"] .mode:hover{background:#fff3b0}}
 
 @media (max-width:900px){
-  .nav__menu-extra .mode--menu{display:inline-flex;margin:16px 0 0 8px;height:50px;padding:0 20px 0 16px;font-size:14px}
-  html[data-mode="front"] .nav__menu-extra .mode--menu{margin-left:0;height:52px;font-size:15px}
+  .nav__links li.nav__menu-top{display:block;border:0;margin:0 0 6px;padding:0}
+  .nav__links li.nav__menu-top::before{display:none}
+  .nav__menu-top .mode--menu{display:inline-flex;margin:0 0 0 8px;height:42px;padding:0 16px 0 13px;font-size:13px}
+  html[data-mode="front"] .nav__menu-top .mode--menu{margin-left:0;height:44px;font-size:14px}
   .nav{gap:6px}
 }
 html[data-mode="front"] .thread circle{display:none}
@@ -308,7 +309,7 @@ html[data-mode="front"] .btn__tx .t2{display:none}
 
 /* ---- burger menu: never clip, scroll cleanly at high zoom / short screens ---- */
 @media (max-width:900px){
-  .nav__links{justify-content:flex-start;-webkit-mask-image:linear-gradient(to bottom,transparent 56px,#000 84px);mask-image:linear-gradient(to bottom,transparent 56px,#000 84px)}
+  .nav__links{justify-content:flex-start;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
   .nav__links::before{margin-top:auto}
   .nav__links>li:last-child{margin-bottom:auto}
   .nav__links>li.nav__menu-extra{padding-bottom:24px}
@@ -320,3 +321,7 @@ html[data-mode="front"] .btn__tx .t2{display:none}
   .nav__links li.nav__menu-extra,html[data-mode="front"] .nav__links li.nav__menu-extra{margin-top:18px}
   .nav__menu-extra p{margin-top:16px}
 }
+
+.nav__links li.nav__menu-top{display:none}
+.nav__links li:nth-child(8){--i:7}
+@media (max-width:900px){.nav__links li.nav__menu-top{display:block}}
