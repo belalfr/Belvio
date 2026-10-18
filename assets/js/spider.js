@@ -37,7 +37,7 @@
       var r = stage.getBoundingClientRect(), hero = document.querySelector(".hero");
       var hr = hero ? hero.getBoundingClientRect() : r, tr = tag.getBoundingClientRect(), m = 36;
       var onTag = e.clientX > tr.left - m && e.clientX < tr.right + m && e.clientY > tr.top - m && e.clientY < tr.bottom + m;
-      stage.classList.toggle("is-hot", onTag);
+      stage.classList.toggle("is-hot", e.clientX >= tr.left && e.clientX <= tr.right && e.clientY >= tr.top && e.clientY <= tr.bottom);
       if (onTag || e.clientY < hr.top || e.clientY > hr.bottom) { tx = 0; ty = 0; return; }   // rest above the label
       tx = Math.max(-150, Math.min(110, (e.clientX - (r.left + r.width / 2)) * 0.55));
       ty = Math.max(-64, Math.min(8, (e.clientY - (r.top + BASE_Y + 60)) * 0.4));
