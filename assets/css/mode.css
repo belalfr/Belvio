@@ -330,7 +330,6 @@ html[data-mode="front"] .btn__tx .t2{display:none}
 html:not([data-mode="front"]) .hero h1 .hl--blue{display:block}
 
 /* ---- theme icon in the nav: moon on the back end, sun on the front end ---- */
-@property --rr{syntax:"<length>";inherits:false;initial-value:0px}
 .nav__cta{display:flex;align-items:center;gap:14px}
 .tmode{position:relative;flex:none;display:block;box-sizing:border-box;width:44px;min-width:44px;height:44px;min-height:44px;margin:0;padding:0;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transform:skewX(-9deg);-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:background .25s,border-color .25s,color .25s}
 .tmode:focus-visible{outline:2px solid var(--link);outline-offset:4px}
@@ -364,21 +363,9 @@ html[data-mode="back"] .tmode:active{transform:skewX(-9deg) scale(.94);transitio
   .nav .nav__cta .btn{display:none}
 }
 @media (prefers-reduced-motion:reduce){.tm-m,.tm-s,.tm-c,.tm-r{animation:none}}
-/* the change: the other mode opens as a ring from the icon, with a bright edge */
-::view-transition-group(root){animation:none}
-::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
-::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:2}
-.tm-ring{position:fixed;pointer-events:none;--rr:0px;view-transition-name:tmring;mask-image:radial-gradient(circle at center,transparent calc(var(--rr) - 120px),#000 calc(var(--rr) - 70px),#000 calc(var(--rr) - 4px),transparent var(--rr));-webkit-mask-image:radial-gradient(circle at center,transparent calc(var(--rr) - 120px),#000 calc(var(--rr) - 70px),#000 calc(var(--rr) - 4px),transparent var(--rr))}
-.tm-ring.to-light{background:repeating-conic-gradient(from 0deg,rgba(252,201,40,.95) 0 3deg,rgba(255,236,150,.35) 3deg 9deg,rgba(252,201,40,.0) 9deg 20deg)}
-.tm-ring.to-dark{background:repeating-conic-gradient(from 0deg,rgba(138,180,248,.95) 0 1.2deg,rgba(138,180,248,.18) 1.2deg 7deg,rgba(138,180,248,0) 7deg 13deg)}
-::view-transition-group(tmring),::view-transition-image-pair(tmring){animation:none}
-::view-transition-old(tmring){display:none}
-::view-transition-new(tmring){animation:none}
-.flip-link{display:inline-flex;align-items:center;gap:8px;padding:0;border:0;background:none;color:var(--link);font:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;transition:text-decoration-color .2s}
-.flip-link:hover,.flip-link:focus-visible{text-decoration-color:currentColor}
-.flip-link b{font-weight:400;display:inline-block;transition:transform .5s var(--ease,ease)}
-.flip-link:hover b{transform:rotate(180deg)}
-html[data-mode="front"] .flip-link{color:var(--blue);font-weight:600}
+/* the change: the spider spins a web (see mode.js) */
+.tm-web{position:fixed;inset:0;z-index:200;pointer-events:none;will-change:opacity}
+.tm-web svg{display:block;width:100%;height:100%}
 
 /* ---- same place in both modes (desktop): header, hero text, search card ---- */
 @media (min-width:901px){
@@ -395,8 +382,5 @@ html[data-mode="front"] .flip-link{color:var(--blue);font-weight:600}
 html:not([data-mode="front"]) .serp__search{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding:9px 13px;border:1px solid var(--line);background:rgba(255,255,255,.03);font:500 13px/1 var(--mono);color:var(--ink);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
 html:not([data-mode="front"]) .serp__search svg{width:15px;height:15px;flex:none;fill:none;stroke:var(--link);stroke-width:2.4;stroke-linecap:round}
 /* the icon button always stays on top and visible during the change */
-.tmode{view-transition-name:tmbtn;min-width:44px;min-height:44px;box-sizing:border-box;appearance:none;-webkit-appearance:none}
-::view-transition-group(tmbtn),::view-transition-image-pair(tmbtn){animation:none}
-::view-transition-old(tmbtn){display:none}
-::view-transition-new(tmbtn){animation:none}
+.tmode{min-width:44px;min-height:44px;box-sizing:border-box;appearance:none;-webkit-appearance:none}
 @media (min-width:721px){html[data-mode="front"] .spider__tag{min-width:253px;justify-content:space-between}}
