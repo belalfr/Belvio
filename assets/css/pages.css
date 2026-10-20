@@ -63,7 +63,7 @@ html[data-motion="reduced"] .spider .legs-a,html[data-motion="reduced"] .spider 
   .hero__right{padding-top:8px;max-width:420px}
 }
 @media (max-width:720px){
-  .hero{min-height:0;padding-top:104px}
+  .hero{padding-top:104px}
   .hero__right{max-width:none}
 }
 /* ---- inner pages ---- */
@@ -172,5 +172,5 @@ html.pos-hold body{opacity:0}
 @media (max-width:720px){
   .hero__right{display:none}
   .hero__cta{display:block;margin-top:44px}
-  .hero{min-height:0;padding-bottom:64px}
+  .hero{min-height:calc(100svh + 28px);justify-content:flex-start;padding-bottom:64px}
 }

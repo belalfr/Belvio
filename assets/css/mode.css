@@ -325,3 +325,78 @@ html[data-mode="front"] .btn__tx .t2{display:none}
 .nav__links li.nav__menu-top{display:none}
 .nav__links li:nth-child(8){--i:7}
 @media (max-width:900px){.nav__links li.nav__menu-top{display:block}}
+
+/* back end: "ranking." sits on its own third line, same as the front end */
+html:not([data-mode="front"]) .hero h1 .hl--blue{display:block}
+
+/* ---- theme icon in the nav: moon on the back end, sun on the front end ---- */
+@property --rr{syntax:"<length>";inherits:false;initial-value:0px}
+.nav__cta{display:flex;align-items:center;gap:14px}
+.tmode{position:relative;flex:none;display:block;box-sizing:border-box;width:44px;min-width:44px;height:44px;min-height:44px;margin:0;padding:0;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transform:skewX(-9deg);-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:background .25s,border-color .25s,color .25s}
+.tmode:focus-visible{outline:2px solid var(--link);outline-offset:4px}
+.tmode svg{position:absolute;left:50%;top:50%;margin:-11px 0 0 -11px;display:block;width:22px;height:22px;min-width:22px;transform:skewX(9deg);fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .7s var(--ease,ease),opacity .45s}
+.tmode:hover{background:var(--ink);color:#0b0b09;border-color:var(--ink)}
+/* which icon shows */
+html[data-mode="back"] .tmode__sun,html:not([data-mode]) .tmode__sun{opacity:0;transform:skewX(9deg) rotate(100deg) scale(.2)}
+html[data-mode="front"] .tmode__moon{opacity:0;transform:skewX(9deg) rotate(-100deg) scale(.2)}
+/* moon: rocks gently, stars twinkle */
+.tm-m{fill:currentColor;fill-opacity:.15;transform-origin:12px 12px;animation:tmrock 5s ease-in-out infinite}
+.tm-s{stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:tmtw 2.6s ease-in-out infinite}
+.tm-s.s2{animation-delay:1.1s}
+@keyframes tmrock{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(9deg)}}
+@keyframes tmtw{0%,100%{opacity:.25;transform:scale(.6)}50%{opacity:1;transform:scale(1.15)}}
+.tmode:hover .tm-s{animation-duration:.9s}
+/* sun: rays turn, core breathes */
+.tm-c{fill:currentColor;fill-opacity:.2;transform-origin:12px 12px;animation:tmcore 3.4s ease-in-out infinite}
+.tm-r{transform-origin:12px 12px;animation:tmspin 16s linear infinite}
+@keyframes tmspin{to{transform:rotate(360deg)}}
+@keyframes tmcore{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+.tmode:hover .tm-r{animation-duration:3.5s}
+/* front end: round, outlined, blue shadow like the other buttons */
+html[data-mode="front"] .tmode{transform:none;border:2px solid #111110;border-radius:50%;background:#fffdf6;color:#111110;box-shadow:3px 3px 0 #2f55f0}
+html[data-mode="front"] .tmode svg{transform:none;stroke-width:2}
+html[data-mode="front"] .tmode__moon{transform:rotate(-100deg) scale(.2)}
+html[data-mode="front"] .tmode:hover{background:#fcd949;color:#111110;border-color:#111110}
+html[data-mode="front"] .tmode:active{transform:translate(3px,3px);box-shadow:0 0 0 #2f55f0;transition:none}
+html[data-mode="back"] .tmode:active{transform:skewX(-9deg) scale(.94);transition:none}
+@media (max-width:900px){
+  .nav .nav__cta{display:flex;position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%)}
+  .nav .nav__cta .btn{display:none}
+}
+@media (prefers-reduced-motion:reduce){.tm-m,.tm-s,.tm-c,.tm-r{animation:none}}
+/* the change: the other mode opens as a ring from the icon, with a bright edge */
+::view-transition-group(root){animation:none}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:2}
+.tm-ring{position:fixed;pointer-events:none;--rr:0px;view-transition-name:tmring;mask-image:radial-gradient(circle at center,transparent calc(var(--rr) - 120px),#000 calc(var(--rr) - 70px),#000 calc(var(--rr) - 4px),transparent var(--rr));-webkit-mask-image:radial-gradient(circle at center,transparent calc(var(--rr) - 120px),#000 calc(var(--rr) - 70px),#000 calc(var(--rr) - 4px),transparent var(--rr))}
+.tm-ring.to-light{background:repeating-conic-gradient(from 0deg,rgba(252,201,40,.95) 0 3deg,rgba(255,236,150,.35) 3deg 9deg,rgba(252,201,40,.0) 9deg 20deg)}
+.tm-ring.to-dark{background:repeating-conic-gradient(from 0deg,rgba(138,180,248,.95) 0 1.2deg,rgba(138,180,248,.18) 1.2deg 7deg,rgba(138,180,248,0) 7deg 13deg)}
+::view-transition-group(tmring),::view-transition-image-pair(tmring){animation:none}
+::view-transition-old(tmring){display:none}
+::view-transition-new(tmring){animation:none}
+.flip-link{display:inline-flex;align-items:center;gap:8px;padding:0;border:0;background:none;color:var(--link);font:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;transition:text-decoration-color .2s}
+.flip-link:hover,.flip-link:focus-visible{text-decoration-color:currentColor}
+.flip-link b{font-weight:400;display:inline-block;transition:transform .5s var(--ease,ease)}
+.flip-link:hover b{transform:rotate(180deg)}
+html[data-mode="front"] .flip-link{color:var(--blue);font-weight:600}
+
+/* ---- same place in both modes (desktop): header, hero text, search card ---- */
+@media (min-width:901px){
+  .nav__logo{flex:0 0 150px}
+  .nav__cta .btn{min-width:220px}
+  html[data-mode="front"] .nav__cta .btn{justify-content:space-between}
+  .nav__links{width:min(470px,38vw);justify-content:space-between;gap:0!important}
+  html[data-mode="front"] .nav__links a{padding:8px 10px}
+}
+@media (min-width:721px){
+  .hero h1{min-height:calc(clamp(48px,7.6vw,112px) * 3 + 2px)}
+  .serp{margin-top:28px!important;min-height:348px}
+}
+html:not([data-mode="front"]) .serp__search{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding:9px 13px;border:1px solid var(--line);background:rgba(255,255,255,.03);font:500 13px/1 var(--mono);color:var(--ink);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
+html:not([data-mode="front"]) .serp__search svg{width:15px;height:15px;flex:none;fill:none;stroke:var(--link);stroke-width:2.4;stroke-linecap:round}
+/* the icon button always stays on top and visible during the change */
+.tmode{view-transition-name:tmbtn;min-width:44px;min-height:44px;box-sizing:border-box;appearance:none;-webkit-appearance:none}
+::view-transition-group(tmbtn),::view-transition-image-pair(tmbtn){animation:none}
+::view-transition-old(tmbtn){display:none}
+::view-transition-new(tmbtn){animation:none}
+@media (min-width:721px){html[data-mode="front"] .spider__tag{min-width:253px;justify-content:space-between}}

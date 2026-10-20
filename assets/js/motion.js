@@ -1,10 +1,15 @@
 // look: back end (dark, default) or front end (cream). Chosen before first paint so there is no flash.
 (function () {
-  var m = null;
+  var m = null, emb = null;
   try {
-    var q = new URLSearchParams(location.search).get("mode");
-    if (q === "front" || q === "back") localStorage.setItem("belvio-mode", q);
-    m = localStorage.getItem("belvio-mode");
+    var sp = new URLSearchParams(location.search), q = sp.get("mode");
+    emb = sp.get("embed");
+    if (emb === "front" || emb === "back") { m = emb; document.documentElement.classList.add("is-embed"); }   // the lens preview: shows a mode without saving it
+    else {
+      emb = null;
+      if (q === "front" || q === "back") localStorage.setItem("belvio-mode", q);
+      m = localStorage.getItem("belvio-mode");
+    }
   } catch (e) {}
   document.documentElement.setAttribute("data-mode", m === "front" ? "front" : "back");
   if (m === "front") { var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute("content", "#f3eedf"); }
@@ -19,6 +24,7 @@
     mode = sessionStorage.getItem("belvio-motion");
   } catch (e) {}
   var reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (document.documentElement.classList.contains("is-embed")) { mode = "off"; }
   if (mode === "on") reduced = false;
   if (mode === "off") reduced = true;
   de.setAttribute("data-motion", reduced ? "reduced" : "full");
